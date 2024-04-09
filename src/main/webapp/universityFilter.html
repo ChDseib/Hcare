@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">演示</a>
+                <a>
+                    <cite>导航元素</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+
+                <div class="layui-col-md12">
+
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <div class="layui-collapse" lay-filter="test">
+                                <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">条件筛选<i class="layui-icon layui-colla-icon"></i></h2>
+                                <div class="layui-colla-content">
+                                  <form class="layui-form" action="">
+                                      
+                                      <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                          <label class="layui-form-label">选择省份</label>
+                                          <div class="layui-input-inline">
+                                            <select name="address">
+                                              <option value="全国">全国</option>
+                                              <option value="江苏省">江苏省</option>
+                                              <option value="北京市">北京市</option>
+                                              <option value="天津市">天津市</option>
+                                              <option value="河北省">河北省</option>
+                                              <option value="山西省">山西省</option>
+                                              <option value="内蒙古">内蒙古</option>
+                                              <option value="辽宁省">辽宁省</option>
+                                              <option value="吉林省">吉林省</option>
+                                              <option value="黑龙江省">黑龙江省</option>
+                                              <option value="上海市">上海市</option>
+                                              <option value="浙江省">浙江省</option>
+                                              <option value="安徽省">安徽省</option>
+                                              <option value="福建省">福建省</option>
+                                              <option value="江西省">江西省</option>
+                                              <option value="山东省">山东省</option>
+                                              <option value="河南省">河南省</option>
+                                              <option value="湖北省">湖北省</option>
+                                              <option value="湖南省">湖南省</option>
+                                              <option value="广东省">广东省</option>
+                                              <option value="广西">广西</option>
+                                              <option value="海南省">海南省</option>
+                                              <option value="重庆市">重庆市</option>
+                                              <option value="四川省">四川省</option>
+                                              <option value="贵州省">贵州省</option>
+                                              <option value="云南省">云南省</option>
+                                              <option value="西藏">西藏</option>
+                                              <option value="陕西省">陕西省</option>
+                                              <option value="甘肃省">甘肃省</option>
+                                              <option value="青海省">青海省</option>
+                                              <option value="宁夏">宁夏</option>
+                                              <option value="新疆">新疆</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="layui-form-item">
+                                          <div class="layui-inline">
+                                          <label class="layui-form-label">首选科目</label>
+                                          <div class="layui-input-block">
+                                              <input type="radio" name="firstType" value="物理类" title="物理类" checked="">
+                                              <input type="radio" name="firstType" value="历史类" title="历史类">
+                                          </div>
+                                          </div>
+                                          <div class="layui-inline">
+                                              <label class="layui-form-label">再选科目</label>
+                                              <div class="layui-input-block">
+                                                  <input type="checkbox" name="twoType" value="政治"  title="政治">
+                                                  <input type="checkbox" name="twoType" value="地理"  title="地理">
+                                                  <input type="checkbox" name="twoType" value="生物"  title="生物">
+                                                  <input type="checkbox" name="twoType" value="化学"  title="化学">
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="layui-form-item">
+                                          <div class="layui-inline">
+                                              <label class="layui-form-label">分数范围</label>
+                                              <div class="layui-input-inline" style="width: 100px;">
+                                                  <input type="text" name="score_min" placeholder="" autocomplete="off" class="layui-input">
+                                              </div>
+                                              <div class="layui-form-mid">-</div>
+                                              <div class="layui-input-inline" style="width: 100px;">
+                                                  <input type="text" name="score_max" placeholder="" autocomplete="off" class="layui-input">
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <!--<div class="layui-form-item">
+                                         <label class="layui-form-label">省内排名</label>
+                                         <div class="layui-input-inline" style="width: 100px;">
+                                             <input type="text" name="ranking" placeholder="" autocomplete="off" class="layui-input">
+                                         </div>
+                                      </div>-->
+
+                                      <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                          <button class="layui-btn" lay-submit="" lay-filter="sub">立即提交</button>
+                                          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        </div>
+                                      </div>
+                                    </form>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table" id="layui_table_id" lay-filter="dataTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        layui.use(['form', 'layer','table'],
+        function() {
+            $ = layui.jquery;
+            var form = layui.form,
+                table = layui.table,
+                layer = layui.layer;
+
+            table.render({
+                id:"dataTable",//
+                elem: '#layui_table_id',//指定表格元素
+                url: '/query',  //请求路径
+                cellMinWidth: 20 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                ,skin: 'line ' //表格风格 line （行边框风格）row （列边框风格）nob （无边框风格）
+                ,even: true    //隔行换色
+                ,page: false  //开启分页
+                ,limit: Number.MAX_VALUE //每页默认显示的数量
+                ,method:'post'  //提交方式
+                ,cols: [[
+                    {type:'checkbox'}, //开启多选框
+                    {field: 'address', title: '所在地', width:70},
+                    {field: 'xname', title: '首选', width:70},
+                    {field: 'ename', title: '再选课目', width:100},
+                    {field: 'uname', title: '学校名称', width:150},
+                    {field: 'remark', title: '备注', width:60},
+                    {field: 'feature', title: '学校特色', width:80},
+                    {field: 'group_name', title: '专业组名称', width:200},
+                    {field: 'scode', title: '专业代号', width:70},
+                    {field: 'sname', title: '专业名称', width:200},
+                    {field: 'score', title: '分数', width:70},
+                    {field: 'ranking', title: '排名', width:70},
+                    {field: 'length', title: '学制', width:70},
+                    {field: 'money', title: '学费', width:70}
+                ]]
+            });
+
+            //监听提交
+            form.on('submit(sub)',
+                function(data) {
+                    console.log(data);
+
+                    var twoType="";
+                    var types = $("input[name='twoType']:checked");
+                    if(types.length !=2 ){
+                        layer.msg('再选科目只能选择两项！',{icon: 5,time:1000});
+                    }
+                    types.each(function () {
+                        twoType += $(this).val()+",";
+                    })
+                    data.field.twoType = twoType.substring(0,twoType.length-1);
+                    //发异步，把数据提交给java后台
+                    $.ajax({
+                        url: "/query",
+                        data: data.field,
+                        method: "post",
+                        success :function (data) {
+                            var d = data.data;
+                            table.render({
+                                elem: '#layui_table_id',//指定表格元素
+                                data:d,
+                                cellMinWidth: 20 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                                ,skin: 'line ' //表格风格 line （行边框风格）row （列边框风格）nob （无边框风格）
+                                ,even: true    //隔行换色
+                                ,page: false  //开启分页
+                                ,limit: Number.MAX_VALUE //每页默认显示的数量
+                                ,cols: [[
+                                    {type:'checkbox'}, //开启多选框
+                                    {field: 'address', title: '所在地', width:70},
+                                    {field: 'xname', title: '首选', width:70},
+                                    {field: 'ename', title: '再选课目', width:100},
+                                    {field: 'uname', title: '学校名称', width:150},
+                                    {field: 'remark', title: '备注', width:60},
+                                    {field: 'feature', title: '学校特色', width:80},
+                                    {field: 'group_name', title: '专业组名称', width:200},
+                                    {field: 'scode', title: '专业代号', width:70},
+                                    {field: 'sname', title: '专业名称', width:200},
+                                    {field: 'score', title: '分数', width:70},
+                                    {field: 'ranking', title: '排名', width:70},
+                                    {field: 'length', title: '学制', width:70},
+                                    {field: 'money', title: '学费', width:70}
+                                ]]
+                            });
+                        }
+                    })
+
+                    return false;
+                });
+
+        });</script>
+
+</html>
