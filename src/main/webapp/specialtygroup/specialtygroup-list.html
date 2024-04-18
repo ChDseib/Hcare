@@ -30,132 +30,62 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
-                            <input type="text" id="name" name="group_code" placeholder="专业组代号" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="name" name="group_code" placeholder="id" autocomplete="off" class="layui-input">
+                        </div>
                         <div class="layui-inline layui-show-xs-block">
-                            <input type="text" id="sname" name="code" placeholder="专业组名称" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="sname" name="code" placeholder="姓名" autocomplete="off" class="layui-input">
+                        </div>
                         <div class="layui-inline layui-show-xs-block">
                             <button class="layui-btn" lay-submit lay-filter="search" onclick="search_name()">
-                                <i class="layui-icon">&#xe615;</i></button>
+                                <i class="layui-icon">&#xe615;</i>搜索
+                            </button>
                         </div>
                         <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel">批量导入</button>
                     </form>
-
-
-
                 </div>
                 <div class="layui-card-header">
-                    <!--                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-                    <button class="layui-btn" onclick="xadmin.open('添加专业组','./specialtygroup-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+                    <button class="layui-btn" onclick="xadmin.open('添加专业组','./specialtygroup-add.html',600,400)">
+                        <i class="layui-icon"></i>添加
+                    </button>
                 </div>
-                <div class="layui-card-body ">
-                    <table class="layui-table" lay-data="{url:'/specialtygroup/list',page:true,id:'gid'}" lay-filter="table">
-                        <thead>
-                        <tr>
-                            <th lay-data="{type:'checkbox'}">ID</th>
-                            <th lay-data="{field:'gid', width:100, sort: true}">GID</th>
-                            <th lay-data="{field:'code', width:170, sort: true, edit: 'text'}">学校代号</th>
-                            <th lay-data="{field:'group_code', width:150,edit: 'text'}">专业组代号</th>
-                            <th lay-data="{field:'group_name', edit: 'text', Width: 100}">专业组名</th>
-                            <th lay-data="{field:'year', edit: 'text', Width: 60}">年份</th>
-                            <th lay-data="{fixed: 'right',toolbar: '#barDemo',minWidth: 140}">操作</th>
-                        </tr>
-                        </thead>
-                    </table>
+                <div class="layui-card-body">
+                    <table class="layui-table" id="gid"></table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
+
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<script type="text/html" id="toolbarDemo">
-    <div class = "layui-btn-container" >
-        <button class = "layui-btn layui-btn-sm" lay-event = "getCheckData" > 获取选中行数据 </button>
-        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button >
-        <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
-    </div >
-</script>
 
 <script>
-    layui.use('table', function() {
+    layui.use(['table', 'jquery'], function() {
         var table = layui.table;
+        var $ = layui.jquery;
+
+        var fallData = [];
+        for (var i = 0; i < 100; i++) {
+            fallData.push({
+                DataID: i + 1,
+                UserID: Math.floor(Math.random() * 1000) + 1,
+                FallTime: '2024-04-18 10:00:00', // 替换成你想要的时间格式
+                DetectionResult: '高心率' // 替换成你想要的检测结果
+            });
+        }
 
         table.render({
-            elem: '#start' //指定元素
-        });
-
-        table.render({
-            elem: '#end' //指定元素
-        });
-
-        table.on('tool(table)',function (obj) {
-            var data = obj.data; //获得当前行数据
-            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-            var tr = obj.tr; //获得当前行 tr 的DOM对象
-
-            if (layEvent === 'del'){
-                layer.confirm('确定删除这行么？', function(index){
-                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-                    layer.close(index);
-                    //向服务端发送删除指令
-                    $.ajax({
-                        url: "/specialtygroup/del",
-                        data: {"gid":data.gid},
-                        method: "post",
-                        success:function(d){
-                            layer.alert(d, {
-                                    icon: 6
-                                },
-                                function() {
-                                    //关闭当前frame
-                                    xadmin.close();
-                                    // 可以对父窗口进行刷新
-                                    xadmin.father_reload();
-                                });
-                        }
-                    });
-                });
-            }else if(layEvent === 'edit'){
-                layer.confirm('确定修改这行么？', function(index){
-                    //向服务端发送删除指令
-                    $.ajax({
-                        url: "/specialtygroup/edit",
-                        data: data,
-                        method: "post",
-                        success:function(d){
-                            layer.alert(d, {
-                                    icon: 6
-                                },
-                                function() {
-                                    //关闭当前frame
-                                    xadmin.close();
-                                    // 可以对父窗口进行刷新
-                                    xadmin.father_reload();
-                                });
-                        }
-                    });
-                });
-            }
+            elem: '#gid',
+            data: fallData,
+            cols: [
+                [{ type: 'checkbox' }, { field: 'DataID', title: 'ID' }, { field: 'UserID', title: '用户ID' }, { field: 'FallTime', title: '跌倒时间' }, { field: 'DetectionResult', title: '检测结果' }, { fixed: 'right', title: '操作', toolbar: '#barDemo' }]
+            ],
+            page: true
         });
     });
 </script>
-<script>
-    layui.use('upload', function() {
-        var upload = layui.upload;
-        upload.render({
-            elem: '#uploadExcel'
-            , url:'/specialtygroup/fileUpload'//路径这看你怎么配置的怎么写
-            , field:"file"
-            , exts: 'xls|xlsx'
-            , done: function (res) {
-                if(res.success){
-                    parent.layer.msg('导入成功！', {icon: 1,time:2000,shade:0.2});
-                }
-            }
-        });
-    });
-</script>
+
 </html>

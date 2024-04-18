@@ -1,194 +1,139 @@
 <!DOCTYPE html>
 <html class="x-admin-sm">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>欢迎页面-X-admin2.2</title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="stylesheet" href="../css/font.css">
-        <link rel="stylesheet" href="../css/xadmin.css">
-        <script src="../lib/layui/layui.js" charset="utf-8"></script>
-        <script type="text/javascript" src="../js/xadmin.js"></script>
-        <!--[if lt IE 9]>
-          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.2</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/xadmin.css">
+    <script src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/xadmin.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 
-    <body>
-        <div class="x-nav">
-            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
-                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
-            </a>
-        </div>
-        <div class="layui-fluid">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-body ">
-                            <div class="demoTable">
-                                专业组名：
-                                <div class="layui-inline">
-                                    <input class="layui-input" name="name" id="nameReload" autocomplete="off">
-                                </div>
-                                专业名：
-                                <div class="layui-inline">
-                                    <input class="layui-input" name="sname" id="snameReload" autocomplete="off">
-                                </div>
-
-                                年份:
-                                <div class="layui-input-inline layui-form">
-                                    <select name="year" id="yearReload">
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                    </select>
-                                </div>
-
-                                <button class="layui-btn" data-type="reload">搜索</button>
-
-                                <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel1">批量导入</button>
-                            </div>
+<body>
+<div class="x-nav">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+    </a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body ">
+                    <div class="demoTable">
+                        用户ID：
+                        <div class="layui-inline">
+                            <input class="layui-input" name="UserID" id="UserIDReload" autocomplete="off">
                         </div>
 
-                        <div class="layui-card-header">
-                            <button class="layui-btn" onclick="xadmin.open('添加专业','./specialty-add.html',600,600)"><i class="layui-icon"></i>添加</button>
+                        提醒时间:
+                        <div class="layui-inline">
+                            <input class="layui-input" name="ReminderTime" id="ReminderTimeReload" autocomplete="off">
                         </div>
 
-                        <div class="layui-card-body ">
-                            <table class="layui-table" lay-data="{url:'/specialty/list',page:true,id:'sid'}" lay-filter="table">
-                                <thead>
-                                    <tr>
-                                        <th lay-data="{type:'checkbox'}">ID</th>
-                                        <th lay-data="{field:'sid', width:80, sort: true}">SID</th>
-                                        <th lay-data="{field:'group_code', width:120, sort: true}">专业组代码</th>
-                                        <th lay-data="{field:'name', edit: 'text', width: 200}">专业组名称</th>
-                                        <th lay-data="{field:'scode', edit: 'text', width: 80}">专业代号</th>
-                                        <th lay-data="{field:'length', width:80, edit: 'text'}">学年</th>
-                                        <th lay-data="{field:'money', width:80,edit: 'text'}">学费</th>
-                                        <th lay-data="{field:'plan_num', edit: 'text', width: 80}">计划数</th>
-                                        <th lay-data="{field:'ranking', edit: 'text', width: 100, sort: true}">排名</th>
-                                        <th lay-data="{field:'score', edit: 'text', width: 80, sort: true}">分数</th>
-                                        <th lay-data="{field:'sname', edit: 'text', minWidth: 200}">专业名</th>
-                                        <th lay-data="{field:'year', edit: 'text', width: 80}">年份</th>
-                                        <th lay-data="{fixed: 'right',toolbar: '#bar',minWidth: 140}">操作</th>
-                                    </tr>
+                        <button class="layui-btn" data-type="reload">搜索</button>
 
-                                </thead>
-                            </table>
-
-                        </div>
+                        <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel1">批量导入</button>
                     </div>
+                </div>
+
+                <div class="layui-card-header">
+                    <button class="layui-btn" onclick="xadmin.open('添加提醒','./medicationreminder-add.html',600,600)"><i class="layui-icon"></i>添加</button>
+                </div>
+
+                <div class="layui-card-body">
+                    <table class="layui-table" id="medicationreminderTable"></table>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 
 
-    <script type="text/html" id="bar">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-    </script>
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 
 
-    <script>
-        layui.use('table', function() {
-            var table = layui.table;
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
 
-            table.render({
-                elem: '#start' //指定元素
+        var fakeData = [];
+        for (var i = 0; i < 50; i++) {
+            fakeData.push({
+                ReminderID: i + 1,
+                UserID: Math.floor(Math.random() * 1000) + 1,
+                ReminderTime: '2024-04-18 10:00:00', // Replace with your desired format
+                MedicationName: 'Medication ' + (i + 1),
+                Dosage: 'Dosage ' + (i + 1)
             });
+        }
 
-            table.render({
-                elem: '#end' //指定元素
-            });
+        table.render({
+            elem: '#medicationreminderTable',
+            data: fakeData,
+            cols: [
+                [
+                    { type: 'checkbox' },
+                    { field: 'ReminderID', title: '提醒ID' },
+                    { field: 'UserID', title: '用户ID' },
+                    { field: 'ReminderTime', title: '提醒时间' },
+                    { field: 'MedicationName', title: '药物名称' },
+                    { field: 'Dosage', title: '剂量' },
+                    { fixed: 'right', title: '操作', toolbar: '#bar' }
+                ]
+            ],
+            page: true
+        });
 
-            var $ =layui.$, active = {
-                reload: function(){
-                    //执行重载
-                    table.reload('sid', {
+        var $ = layui.$,
+            active = {
+                reload: function() {
+                    // Execute reload
+                    table.reload('medicationreminderTable', {
                         page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        ,where: {
-                            name:  $('#nameReload').val(),		//在表格中进行搜索
-                            sname:  $('#snameReload').val(),		//在表格中进行搜索
-                            year:  $('#yearReload').val()		//在表格中进行搜索
+                            curr: 1 // Restart from page 1
+                        },
+                        where: {
+                            UserID: $('#UserIDReload').val(),
+                            ReminderTime: $('#ReminderTimeReload').val()
                         }
                     });
                 }
             };
 
-            $('.demoTable .layui-btn').on('click', function(){
-                var type = $(this).data('type');
-                active[type] ? active[type].call(this) : '';
-            });
-
-            table.on('tool(table)',function (obj) {
-                var data = obj.data; //获得当前行数据
-                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-                var tr = obj.tr; //获得当前行 tr 的DOM对象
-
-                if (layEvent === 'del'){
-                    layer.confirm('确定删除这行么？', function(index){
-                        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-                        layer.close(index);
-                        //向服务端发送删除指令
-                        $.ajax({
-                            url: "/specialty/del",
-                            data: {"sid":data.sid},
-                            method: "post",
-                            success:function(d){
-                                layer.alert(d, {
-                                        icon: 6
-                                    },
-                                    function() {
-                                        //关闭当前frame
-                                        xadmin.close();
-                                        // 可以对父窗口进行刷新
-                                        xadmin.father_reload();
-                                    });
-                            }
-                        });
-                    });
-                }else if(layEvent === 'edit'){
-                    layer.confirm('确定修改这行么？', function(index){
-                        $.ajax({
-                            url: "/specialty/edit",
-                            data: data,
-                            method: "post",
-                            success:function(d){
-                                layer.alert(d, {
-                                        icon: 6
-                                    },
-                                    function() {
-                                        //关闭当前frame
-                                        xadmin.close();
-                                        // 可以对父窗口进行刷新
-                                        xadmin.father_reload();
-                                    });
-                            }
-                        });
-                    });
-                }
-            });
+        $('.demoTable .layui-btn').on('click', function() {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
-    </script>
-    <script>
-        layui.use('upload', function() {
-            var upload = layui.upload;
-            upload.render({
-                elem: '#uploadExcel1'
-                , url:'/specialty/fileUpload'//路径这看你怎么配置的怎么写
-                , field:"file"
-                , exts: 'xls|xlsx'
-                , done: function (res) {
-                    if(res.success){
-                        parent.layer.msg('导入成功！', {icon: 1,time:2000,shade:0.2});
-                    }
+    });
+</script>
+<script>
+    layui.use('upload', function() {
+        var upload = layui.upload;
+        upload.render({
+            elem: '#uploadExcel1',
+            url: '/medicationreminder/fileUpload', // Adjust the path according to your configuration
+            field: "file",
+            exts: 'xls|xlsx',
+            done: function(res) {
+                if (res.success) {
+                    parent.layer.msg('导入成功！', { icon: 1, time: 2000, shade: 0.2 });
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>
+
 </html>

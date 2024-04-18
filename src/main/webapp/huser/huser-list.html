@@ -150,30 +150,46 @@
 
         // 获取用户列表
         function refreshUserList() {
-            $.ajax({
-                url: '/api/huser/list',
-                type: 'GET',
-                success: function(response) {
-                    var huserList = $('#huser-list');
-                    huserList.empty();
-
-                    $.each(response, function(index, huser) {
-                        var row = $('<tr></tr>');
-                        row.append('<td>' + huser.role + '</td>');
-                        row.append('<td>' + huser.username + '</td>');
-                        row.append('<td>' + huser.userID + '</td>');
-                        row.append('<td>' + huser.phone + '</td>');
-                        row.append('<td>' + huser.gender + '</td>');
-                        row.append('<td>' + huser.bindingID + '</td>');
-                        row.append('<td>' + huser.age + '</td>');
-                        row.append('<td>' + huser.name + '</td>');
-                        row.append('<td><button class="layui-btn layui-btn-danger delete-btn" data-id="' + huser.userID + '">Delete</button></td>');
-                        huserList.append(row);
-                    });
+            // 构造假数据
+            var fakeData = [
+                {
+                    role: 'Admin',
+                    username: 'admin',
+                    userID: 1,
+                    phone: '123456789',
+                    gender: 'Male',
+                    bindingID: 101,
+                    age: 30,
+                    name: 'Admin User'
                 },
-                error: function(error) {
-                    console.log(error);
+                {
+                    role: 'User',
+                    username: 'user',
+                    userID: 2,
+                    phone: '987654321',
+                    gender: 'Female',
+                    bindingID: 102,
+                    age: 25,
+                    name: 'Regular User'
                 }
+                // Add more fake data as needed
+            ];
+
+            var huserList = $('#huser-list');
+            huserList.empty();
+
+            $.each(fakeData, function(index, huser) {
+                var row = $('<tr></tr>');
+                row.append('<td>' + huser.role + '</td>');
+                row.append('<td>' + huser.username + '</td>');
+                row.append('<td>' + huser.userID + '</td>');
+                row.append('<td>' + huser.phone + '</td>');
+                row.append('<td>' + huser.gender + '</td>');
+                row.append('<td>' + huser.bindingID + '</td>');
+                row.append('<td>' + huser.age + '</td>');
+                row.append('<td>' + huser.name + '</td>');
+                row.append('<td><button class="layui-btn layui-btn-danger delete-btn" data-id="' + huser.userID + '">Delete</button></td>');
+                huserList.append(row);
             });
         }
 
@@ -196,10 +212,13 @@
             });
         }
 
-// 刷新整个页面
+        // 刷新整个页面
         function refreshPage() {
             location.reload(); // 刷新页面
         }
+
+        // 初次加载页面时调用刷新用户列表的函数
+        refreshUserList();
     });
 </script>
 </body>
